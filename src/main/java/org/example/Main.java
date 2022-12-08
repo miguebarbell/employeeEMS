@@ -3,6 +3,7 @@ package org.example;
 import java.util.Scanner;
 
 public class Main {
+	//This comment should be saved
 	public static void main(String[] args) {
 		Database database = new Database();
 		Scanner in = new Scanner(System.in);
