@@ -49,4 +49,12 @@ public class Employee {
 	public String getLastName() {
 		return lastName;
 	}
+
+	@Override
+	public String toString() {
+		StringBuilder string = new StringBuilder();
+		string.append("\n" + employeeId + " " + firstName + " " + lastName + "\n" + department + " " + salary);
+		return string.toString();
+	}
+
 }
