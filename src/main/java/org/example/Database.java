@@ -4,6 +4,7 @@ package org.example;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 
 public class Database {
@@ -57,53 +58,33 @@ public class Database {
 		System.out.println("New Department: ");
 		String newDepartment = scan.nextLine();
 		employee.setDepartment(newDepartment);
-		
-		
-		
-		
 	}
 	
 	
 	public Employee findEmployee(int id) {
-		
 		for (int i = 0; i < employees.size(); i++) {
 			if(employees.get(i).getEmployeeId() == id) {return employees.get(i);} 
 		}
-			return null; //if not there return null
+			return null;
 	}
 	
-///////////////////////////////////////////////////////////////////////////////////////////	
-	
-/////////////////////////////NEW CODE////////////////////////	
 	public void deleteEmployee(Scanner scan) {
-		
 		System.out.println("Enter the ID of the employee you want to remove: ");
 		int tempId = scan.nextInt();
-		scan.nextLine();																																					
-		int exception = 1;
-		
-		for (int i = 0; i < employees.size(); i++) {
-			
-			
-			
-			if (employees.get(i).getEmployeeId() == tempId) {exception = 0;}
-
-			if(exception == 1) {
-				System.out.println("INVALID ID");
+		scan.nextLine();
+		try {
+			if (employees.stream()
+			             .filter(employee -> employee.getEmployeeId() == tempId)
+			             .count() < 1) {
+				throw new UserNotFound();
 			} else {
-				employees.remove(employees.get(i));
-				System.out.println("Employee Removed");
+				employees = employees.stream()
+				                     .filter(employee -> employee.getEmployeeId() != tempId)
+				                     .collect(Collectors.toList());
+				System.out.println("User Removed");
 			}
-
-			
-//			System.out.println("IT RAN");
-				
+		} catch (UserNotFound e) {
+			System.out.println("id User : " + tempId + " not found.");
 		}
-		
 	}
-		
-//////////////////////////////////////////////////////////////		
-		
-		
-	
 }
