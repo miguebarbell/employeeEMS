@@ -31,5 +31,33 @@ public class Database {
 		employees.forEach(employee -> {
 			System.out.println(employee.toString());
 		});
+		
+		/////////////////////////////NEW CODE////////////////////////////	
+	public void testFunc(Scanner scan) {
+		
+		System.out.println("Enter the ID of the employee you want to remove: ");
+		int tempId = scan.nextInt();
+		scan.nextLine();																																					
+		
+		for (int i = 0; i < employees.size(); i++) {
+			
+			int exception = 1;
+			
+			if (employees.get(i).getEmployeeId() == tempId) {exception = 0;}
+
+			if(exception == 1) {
+				System.out.println("INVALID ID");
+			} else {
+				employees.remove(employees.get(i));
+				System.out.println("Employee Removed");
+			}
+
+			
+			System.out.println("IT RAN");
+				
+		}
+		
+		//////////////////////////////////////////////////////////////
+		
 	}
 }
