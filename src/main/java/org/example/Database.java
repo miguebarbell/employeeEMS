@@ -1,4 +1,4 @@
-package org.example;
+package employeeProject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,17 +31,62 @@ public class Database {
 		employees.forEach(employee -> {
 			System.out.println(employee.toString());
 		});
+	}
+	
+////////////////////////NEWER CODE/////////////////////////////////////////////////////////	
+	
+	public void changeFunction(Scanner scan) { 
 		
-		/////////////////////////////NEW CODE////////////////////////////	
-	public void testFunc(Scanner scan) {
+		System.out.println("Enter ID of who you want to change");
+		int tempId = scan.nextInt();
+		scan.nextLine();
+		
+		Employee employee = findEmployee(tempId);
+		
+		System.out.println("New first name: ");
+		String newFirstName = scan.nextLine();
+		employee.setFirstName(newFirstName);	
+		
+		System.out.println("New last name: ");
+		String newLastName = scan.nextLine();
+		employee.setLastName(newLastName);
+		
+		System.out.println("New Salary: ");
+		int newSalary = scan.nextInt();
+		employee.setSalary(newSalary);
+		
+//		scan.nextLine();
+		System.out.println("New Department: ");
+		String newDepartment = scan.nextLine();
+		employee.setDepartment(newDepartment);
+		
+		
+		
+		
+	}
+	
+	
+	public Employee findEmployee(int id) {
+		
+		for (int i = 0; i < employees.size(); i++) {
+			if(employees.get(i).getEmployeeId() == id) {return employees.get(i);} 
+		}
+			return null; //if not there return null
+	}
+	
+///////////////////////////////////////////////////////////////////////////////////////////	
+	
+/////////////////////////////NEW CODE////////////////////////	
+	public void deleteEmployee(Scanner scan) {
 		
 		System.out.println("Enter the ID of the employee you want to remove: ");
 		int tempId = scan.nextInt();
 		scan.nextLine();																																					
+		int exception = 1;
 		
 		for (int i = 0; i < employees.size(); i++) {
 			
-			int exception = 1;
+			
 			
 			if (employees.get(i).getEmployeeId() == tempId) {exception = 0;}
 
@@ -53,11 +98,14 @@ public class Database {
 			}
 
 			
-			System.out.println("IT RAN");
+//			System.out.println("IT RAN");
 				
 		}
 		
-		//////////////////////////////////////////////////////////////
-		
 	}
+		
+//////////////////////////////////////////////////////////////		
+		
+		
+	
 }
