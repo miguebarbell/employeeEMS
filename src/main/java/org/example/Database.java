@@ -7,10 +7,6 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-import static org.example.Main.main;
-import static org.example.Main.menu2;
-
-
 public class Database {
 	public List<Employee> employees;
 
