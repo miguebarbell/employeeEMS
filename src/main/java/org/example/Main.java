@@ -24,6 +24,7 @@ public class Main {
 				case "2":
 					break;
 				case "3":
+					database.testFunc(in); ///////////////NEW CODE//////////////////
 					break;
 				case "4":
 					database.listEmployees();
