@@ -44,6 +44,7 @@ public class Database {
 		employees.forEach(employee -> {
 			System.out.println(employee.toString());
 		});
+		System.out.println("---------\n");
 	}
 
 	public void changeFunction(Scanner scan) {
