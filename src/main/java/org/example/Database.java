@@ -1,4 +1,5 @@
-package employeeProject;
+package org.example;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +10,7 @@ public class Database {
 	public List<Employee> employees;
 
 	Database() {
-		this.employees = new ArrayList<Employee>();
+		this.employees = new ArrayList<>();
 	}
 
 	void addEmployee(Scanner in) {
@@ -21,7 +22,6 @@ public class Database {
 		int salary = in.nextInt();
 		in.nextLine();
 		System.out.println("Department: ");
-//		in.nextLine();
 		String department = in.nextLine();
 		Employee newEmployee = new Employee(firstName, lastName, salary, department);
 		employees.add(newEmployee);
@@ -32,9 +32,7 @@ public class Database {
 			System.out.println(employee.toString());
 		});
 	}
-	
-////////////////////////NEWER CODE/////////////////////////////////////////////////////////	
-	
+
 	public void changeFunction(Scanner scan) { 
 		
 		System.out.println("Enter ID of who you want to change");

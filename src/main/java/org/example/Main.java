@@ -25,7 +25,7 @@ public class Main {
 					database.changeFunction(in); //NEWER CODE
 					break;
 				case "3":
-					database.testFunc(in); ///////////////NEW CODE//////////////////
+					database.deleteEmployee(in);
 					break;
 				case "4":
 					database.listEmployees();
