@@ -1,13 +1,15 @@
 package org.example;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-public class Database {
+public class Database implements Serializable{
+	private static final long serialVersionUID = 1L;
 	public List<Employee> employees;
 
 	Database() {
@@ -104,5 +106,13 @@ public class Database {
 		} catch (UserNotFound e) {
 			System.out.println("id User : " + tempId + " not found.");
 		}
+	}
+	
+	public int getLastID() {
+		int size = employees.size();
+		int lastID = 0;
+		if(size != 0)
+			lastID = employees.get(size-1).getEmployeeId();
+		return lastID;
 	}
 }
