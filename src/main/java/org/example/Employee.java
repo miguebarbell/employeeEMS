@@ -1,8 +1,10 @@
 package org.example;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Employee {
+public class Employee implements Serializable{
+	private static final long serialVersionUID = 1L;
 	static int count = 0;
 	String firstName;
 	String lastName;
@@ -21,6 +23,9 @@ public class Employee {
 		this.dateOfEmployment = LocalDate.now();
 		this.department = department;
 	}
+	public Employee() {
+		// TODO Auto-generated constructor stub
+	}
 	void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
@@ -32,6 +37,10 @@ public class Employee {
 	}
 	void setSalary(int salary) {
 		this.salary = salary;
+	}
+	
+	void setCount(int in) {
+		count = in;
 	}
 
 	public int getSalary() {
