@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
+import static org.example.Main.main;
+import static org.example.Main.menu2;
+
 
 public class Database {
 	public List<Employee> employees;
@@ -20,13 +23,20 @@ public class Database {
 		System.out.println("Last Name: ");
 		String lastName = in.nextLine();
 		System.out.println("Set Salary: ");
-		int salary = in.nextInt();
-		in.nextLine();
-		System.out.println("Department: ");
-		String department = in.nextLine();
-		Employee newEmployee = new Employee(firstName, lastName, salary, department);
-		employees.add(newEmployee);
-		System.out.println("Added " + newEmployee.getFirstName() + " " + newEmployee.getLastName());
+		int salary = 0;
+		try {
+			salary = in.nextInt();
+			in.nextLine();
+			System.out.println("Department: ");
+			String department = in.nextLine();
+			Employee newEmployee = new Employee(firstName, lastName, salary, department);
+			employees.add(newEmployee);
+			System.out.println("Added " + newEmployee.getFirstName() + " " + newEmployee.getLastName());
+		} catch (NumberFormatException e) {
+			System.out.println("Invalid number");
+		} catch (Exception e) {
+			System.out.println("Invalid salary");
+		}
 	}
 	void listEmployees() {
 		employees.forEach(employee -> {
