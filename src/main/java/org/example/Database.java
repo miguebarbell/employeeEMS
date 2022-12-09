@@ -31,7 +31,7 @@ public class Database {
 			System.out.println("Added " + newEmployee.getFirstName() + " " + newEmployee.getLastName());
 		} catch (NumberFormatException e) {
 			System.out.println("Invalid number");
-		} catch (Exception e) {
+		} catch (InputMismatchException e) {
 			System.out.println("Invalid salary");
 		}
 	}
