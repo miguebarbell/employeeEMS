@@ -53,7 +53,8 @@ public class Employee {
 	@Override
 	public String toString() {
 		StringBuilder string = new StringBuilder();
-		string.append("\n" + employeeId + " " + firstName + " " + lastName + "\n" + department + " " + salary);
+		string.append("----------\nID: " + employeeId + "\nFirst name: " + firstName + "\nLast name: " + lastName +
+				"\nDepartment: " + department + "\nSalary: " + salary);
 		return string.toString();
 	}
 

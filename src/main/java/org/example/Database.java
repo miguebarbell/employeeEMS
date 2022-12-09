@@ -2,13 +2,10 @@ package org.example;
 
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
-
-import static org.example.Main.main;
-import static org.example.Main.menu2;
-
 
 public class Database {
 	public List<Employee> employees;
@@ -38,46 +35,57 @@ public class Database {
 			System.out.println("Invalid salary");
 		}
 	}
+
 	void listEmployees() {
 		employees.forEach(employee -> {
 			System.out.println(employee.toString());
 		});
+		System.out.println("---------\n");
 	}
 
-	public void changeFunction(Scanner scan) { 
-		
+	public void changeFunction(Scanner scan) {
 		System.out.println("Enter ID of who you want to change");
 		int tempId = scan.nextInt();
 		scan.nextLine();
-		
-		Employee employee = findEmployee(tempId);
-		
-		System.out.println("New first name: ");
-		String newFirstName = scan.nextLine();
-		employee.setFirstName(newFirstName);	
-		
-		System.out.println("New last name: ");
-		String newLastName = scan.nextLine();
-		employee.setLastName(newLastName);
-		
-		System.out.println("New Salary: ");
-		int newSalary = scan.nextInt();
-		employee.setSalary(newSalary);
-		
-		scan.nextLine();
-		System.out.println("New Department: ");
-		String newDepartment = scan.nextLine();
-		employee.setDepartment(newDepartment);
-	}
-	
-	
-	public Employee findEmployee(int id) {
-		for (int i = 0; i < employees.size(); i++) {
-			if(employees.get(i).getEmployeeId() == id) {return employees.get(i);} 
+		try {
+			Employee employee = findEmployee(tempId);
+			if (null == employee) {
+				throw new UserNotFound();
+			}
+			System.out.println("New first name: ");
+			String newFirstName = scan.nextLine();
+			employee.setFirstName(newFirstName);
+
+			System.out.println("New last name: ");
+			String newLastName = scan.nextLine();
+			employee.setLastName(newLastName);
+			System.out.println("New Salary: ");
+			int newSalary = scan.nextInt();
+			employee.setSalary(newSalary);
+			scan.nextLine();
+			System.out.println("New Department: ");
+			String newDepartment = scan.nextLine();
+			employee.setDepartment(newDepartment);
+		} catch (UserNotFound e) {
+			System.out.println("Not a valid ID");
+		} catch (InputMismatchException e) {
+			System.out.println("Invalid as salary");
+		} catch (Exception e) {
+			System.out.println("Not an option");
 		}
-			return null;
 	}
-	
+
+
+	public Employee findEmployee(int id) {
+
+		for (int i = 0; i < employees.size(); i++) {
+			if (employees.get(i).getEmployeeId() == id) {
+				return employees.get(i);
+			}
+		}
+		return null;
+	}
+
 	public void deleteEmployee(Scanner scan) {
 		System.out.println("Enter the ID of the employee you want to remove: ");
 		int tempId = scan.nextInt();
