@@ -57,4 +57,7 @@ public class Employee {
 		return string.toString();
 	}
 
+	public int getEmployeeId() {
+		return this.employeeId;
+	}
 }

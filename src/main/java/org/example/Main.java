@@ -22,8 +22,10 @@ public class Main {
 					database.addEmployee(in);
 					break;
 				case "2":
+					database.changeFunction(in); //NEWER CODE
 					break;
 				case "3":
+					database.deleteEmployee(in);
 					break;
 				case "4":
 					database.listEmployees();
