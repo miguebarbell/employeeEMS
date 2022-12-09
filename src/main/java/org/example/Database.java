@@ -55,7 +55,7 @@ public class Database {
 		int newSalary = scan.nextInt();
 		employee.setSalary(newSalary);
 		
-//		scan.nextLine();
+		scan.nextLine();
 		System.out.println("New Department: ");
 		String newDepartment = scan.nextLine();
 		employee.setDepartment(newDepartment);
